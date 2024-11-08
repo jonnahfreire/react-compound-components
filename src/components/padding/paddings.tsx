@@ -27,6 +27,10 @@ const StyledPaddingRight = styled(StyledPaddingAll)`
   padding: ${({ $padding }) => `0px ${$padding} 0px 0px`};
 `;
 
+const StyledPaddingBottom = styled(StyledPaddingAll)`
+  padding: ${({ $padding }) => `0px  0px ${$padding} 0px`};
+`;
+
 const StyledPaddingOnly = styled.div<{
   $t?: string;
   $l?: string;
@@ -36,7 +40,7 @@ const StyledPaddingOnly = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${({ $t, $l, $r, $b }) => `${$t} ${$r} ${$b} ${$l}`};
+  padding: ${({ $t, $r, $b, $l }) => `${$t} ${$r} ${$b} ${$l}`};
 `;
 
 export const All = ({ children, value }: PaddingProps) => {
@@ -63,6 +67,15 @@ export const Right = ({ children, value }: PaddingProps) => {
   const paddingValue = value ? `${value}px` : "0px";
   return (
     <StyledPaddingRight $padding={paddingValue}>{children}</StyledPaddingRight>
+  );
+};
+
+export const Bottom = ({ children, value }: PaddingProps) => {
+  const paddingValue = value ? `${value}px` : "0px";
+  return (
+    <StyledPaddingBottom $padding={paddingValue}>
+      {children}
+    </StyledPaddingBottom>
   );
 };
 
